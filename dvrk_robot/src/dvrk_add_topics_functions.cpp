@@ -501,6 +501,12 @@ void dvrk::add_topics_io(mtsROSBridge & bridge,
     bridge.AddPublisherFromCommandRead<prmPositionJointGet, sensor_msgs::JointState>
         (arm_name + "-io", "GetPositionActuator",
          ros_namespace + "/actuator_position");
+    bridge.AddPublisherFromCommandRead<vctDoubleVec, sensor_msgs::JointState>
+        (arm_name + "-io", "GetActuatorAmpTemperature",
+         ros_namespace + "/fpga_velocities");
+    bridge.AddPublisherFromCommandRead<vctDoubleVec, sensor_msgs::JointState>
+        (arm_name + "-io", "GetVelocityLowResRaw",
+         ros_namespace + "/fpga_velocities_low_res");
 }
 
 void dvrk::connect_bridge_io(mtsROSBridge & bridge,
